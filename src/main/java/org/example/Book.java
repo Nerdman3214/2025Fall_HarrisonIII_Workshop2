@@ -8,6 +8,7 @@ public class Book {
     private boolean checkedOut;
     private String category;
 
+    // Constructor
     public Book(int id, String isbn, String title, boolean checkedIn, boolean checkedOut, String category) {
         this.id = id;
         this.isbn = isbn;
@@ -17,23 +18,23 @@ public class Book {
         this.category = category;
     }
 
+
+
     // Getters
     public int getId() { return id; }
     public String getIsbn() { return isbn; }
     public String getTitle() { return title; }
     public boolean isCheckedIn() { return checkedIn; }
-    public boolean isCheckedOut() { return checkedOut; }
+    public boolean isCheckedOut() { return !checkedIn; }
     public String getCategory() { return category; }
 
     // Setters
     public void setCheckedIn(boolean checkedIn) {
         this.checkedIn = checkedIn;
-        this.checkedOut = !checkedIn; // keep consistency
     }
 
     public void setCheckedOut(boolean checkedOut) {
-        this.checkedOut = checkedOut;
-        this.checkedIn = !checkedOut; // keep consistency
+        this.checkedIn = !checkedOut;
     }
 
     @Override
@@ -43,9 +44,7 @@ public class Book {
                 ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", checkedIn=" + checkedIn +
-                ", checkedOut=" + checkedOut +
                 ", category='" + category + '\'' +
                 '}';
     }
 }
-
